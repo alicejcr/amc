@@ -205,8 +205,9 @@ public class Grafoo {
 	
 
 	public static int[] find_parents(ArrayList<Tuple> caminho) { //funciona
-		int[] r = new int[caminho.size()];
+		int[] r = new int[caminho.size()+1];
 		int node = caminho.size();
+		r[node] =-1;
 		Stack<Integer> s = new Stack<Integer>();
 		boolean[] visited = new boolean[caminho.size()+1];
 		s.push(node);
