@@ -79,6 +79,42 @@ public class Amostra {
 		return r;
 	}
 	
+	
+	
+	public int length() {
+		ArrayList<int[]> pos = new ArrayList<int[]>();
+		pos=this.list;
+		return pos.size();		
+	}
+	
+	
+	public int[] element (int p) {
+		ArrayList<int[]> pos = new ArrayList<int[]>();
+		pos=this.list;
+		return pos.get(p);
+	}
+	
+	
+	public int domain (int [] posicoes) { // Não está a funcioanar no caso de vermos duas colunas
+		ArrayList<int[]> pos = new ArrayList<int[]>();
+		// fazer com a transposta para ler as linhas
+		// recebe uma amostra??? ver slack
+		pos=this.list;
+		int res =1;
+		for (int i : posicoes) {
+			int maximo=0;
+			for (int j =0 ; j<pos.size(); j++) {
+				int e = pos.get(j)[posicoes[i]];
+				if (e>maximo) {
+					maximo=e;
+				}
+			}
+			res = res*(maximo+1);
+		}
+		return res;
+	}
+
+	
 	public boolean[] exp1(int a) {
 		boolean[] r = new boolean[a];
 		return r;
@@ -103,7 +139,7 @@ public class Amostra {
 	
 
 	public static void main(String[] args) {
-		Amostra amostra = new Amostra("bcancer.csv");
+		// Amostra amostra = new Amostra("bcancer.csv");
 		Amostra exp = new Amostra();
 		int[] u1 = {0,0,1};
 		int[] u2 = {1,1,0};
@@ -111,12 +147,15 @@ public class Amostra {
 		int[] u4 = {0,3,1};
 		int[] var = {0,2};
 		int[] val = {0,1};
+		int[] d0 = {0};
 		exp.add(u1);
 		exp.add(u2);
 		exp.add(u3);
 		exp.add(u4);
 		System.out.println(exp);
 		System.out.println(exp.count(var,val));
+		System.out.println(Arrays.toString(exp.element(2)));
+		System.out.println(exp.domain(d0));
 	}
 
 }

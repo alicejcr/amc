@@ -1,6 +1,5 @@
 package floresta;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Forest {
@@ -9,7 +8,10 @@ public class Forest {
 	
 	public Forest(int n) {
 		this.dim = n;
-		this.pais = new int[n]; // ver se da para ter null em vez de zero
+		this.pais = new int[n];
+		for (int i= 0; i<this.dim; i++) {
+			this.pais[i]=-1;
+		}
 	}
 	
 	public void set_parent(int n, int m) {
@@ -19,7 +21,7 @@ public class Forest {
 	public boolean treeQ() {
 		int r = 0;
 		for (int i = 0; i< this.pais.length ; i++) {
-			if (this.pais[i]==0) {
+			if (this.pais[i]==-1) {
 				r+=1;
 			}
 		}
