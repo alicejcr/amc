@@ -3,6 +3,8 @@ package grafo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
+
+import amostra.Amostra;
 import tuple.Tuple;
 
 
@@ -228,12 +230,47 @@ public class Grafoo {
 		return r;
 	}
 	
+	public double weight(Amostra amostra, int F, int P) {
+		int[] filhos = {F};
+		int f = amostra.domain(filhos); //f = numero de valores que Filho pode tomar
+		int[] pai = {P};
+		int p = amostra.domain(pai);
+		double res = 0;
+		for (int x =0; x < f; x++) {
+			for (int y=0; y < p; y++) {
+				//queremos contar quantas vezes o filho e x e o pai e y
+				int[] var = {F,P};
+				int[] val = {x,y};
+				int[] valx = {x};
+				int[] valy = {y};
+				double pbb_fora =amostra.count(var,val)/amostra.length(); 
+				if (pbb_fora !=0) {
+					double log = amostra.count(var,val)*amostra.length()/(amostra.count(pai,valy)*amostra.count(filhos, valx));
+					res+= pbb_fora* Math.log(log);
+				}
+			}
+		
+		}
+		return res;	
+	}
+	
+	
+	public Grafoo g_completo(Amostra amostra) { //falta testar
+		int nr_nos = amostra.nr_var();
+		Grafoo res = new Grafoo(nr_nos);
+		for (int i = 0; i< nr_nos; i++) {
+			for (int j = 0; i < j && j< nr_nos; j++) {
+				res.add_edge(i, j, weight(amostra,j,i));
+			}
+		}
+		return res;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Grafoo [dim=" + dim + ", ma=" + Arrays.deepToString(ma) + "]";
 	}
-	
-
 	
 	
 	
@@ -252,6 +289,9 @@ public class Grafoo {
 		exp.add_edge(4, 5, 3);
 		exp.add_edge(3, 5, 4);
  		System.out.println(Arrays.toString(exp.max_spanning_tree()));
+ 		
+ 		
+ 		
 		
 		
 	}

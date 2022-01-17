@@ -113,6 +113,21 @@ public class Amostra {
 		}
 		return res;
 	}
+	
+	// ve o primeiro elemento e diz o seu comprimento
+	
+	public int nr_var() {
+		if (this.length()>0) {
+			return element(0).length;
+		}
+		else {
+			throw new AssertionError("Ta vazio");
+		}
+	}
+	
+	
+	//salvaguarda: se tiver elementos, checka o primeiro e ve se tem o mm tamanho do que vamos adicionar
+	//se nao tiver elementos, adiciona so
 
 	
 	public boolean[] exp1(int a) {
