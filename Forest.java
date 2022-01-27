@@ -1,8 +1,10 @@
 package floresta;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Forest {
+public class Forest implements Serializable{
+	private static final long serialVersionUID = 1L;
 	int dim;
 	int[] pais;
 	
@@ -18,12 +20,18 @@ public class Forest {
 		this.pais[m]=n;
 	}
 	
+	public int pai_da_crianca(int f) {
+		return this.pais[f];
+	}
+	
 	public boolean treeQ() {
 		int r = 0;
-		for (int i = 0; i< this.pais.length ; i++) {
+		int i=0;
+		while (i < this.pais.length && r < 2) {
 			if (this.pais[i]==-1) {
 				r+=1;
 			}
+			i++;
 		}
 		return r==1 ;
 	}
