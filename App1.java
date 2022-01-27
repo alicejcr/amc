@@ -23,6 +23,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 
 public class App1 implements Serializable{
@@ -136,6 +138,11 @@ public class App1 implements Serializable{
 			
 			btnNewButton_2.setBounds(352, 320, 266, 72);
 			frame.getContentPane().add(btnNewButton_2);
+			
+			JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon(App1.class.getResource("/imagens/wallpaper_IST_Branco_2560-removebg-preview (1).png")));
+			lblNewLabel.setBounds(32, 11, 202, 91);
+			frame.getContentPane().add(lblNewLabel);
 
 		}
 	}

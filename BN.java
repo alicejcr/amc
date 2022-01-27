@@ -146,7 +146,11 @@ public class BN implements Serializable{
 		return res;
 	}
 	
-	
+	public int d_classe() {
+		int nr_nos = this.arvore.dim() -1;
+		double[][] matriz = this.DFO.get(nr_nos);
+		return matriz.length;
+	}
 	
 	
 
@@ -158,7 +162,10 @@ public class BN implements Serializable{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Amostra amostra = new Amostra("bcancer.csv");
+		Amostra biologica = new Amostra("iris.csv");
 		Grafoo boa = Grafoo.g_completo(amostra);
+		Grafoo biol = Grafoo.g_completo(biologica);
+		BN exp2 = new BN (biol.max_spanning_tree1(), biologica, 0.5);
  		System.out.println(Arrays.toString(boa.max_spanning_tree()));
  		BN exp = new BN (boa.max_spanning_tree1(), amostra, 0.5);
  		//System.out.println(exp);
@@ -167,6 +174,7 @@ public class BN implements Serializable{
  		System.out.println(exp.prob(a));
 		System.out.println(exp.prob(b));
 		System.out.println(exp.prob(a)>exp.prob(b));
+		System.out.println(exp2.d_classe());
 
 	}
 

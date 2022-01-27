@@ -36,6 +36,9 @@ public class Forest implements Serializable{
 		return r==1 ;
 	}
 	
+	public int dim() {
+		return this.dim;
+	}
 
 
 	@Override
